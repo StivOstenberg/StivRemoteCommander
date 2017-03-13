@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SRCServerList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ServerList.xsd">
+<Folder Name="ServerList" >
+  <Folder Name="Branches" >
+        <Folder Name="Daily8"  >
+            <Server Name="D8-MGMT-01" IP="192.168.0.1" Domain="MRDAILY8" Note="">
+              <Type Name="NTP"/>
+              <Type Name="MGMT"/>
+              <Type Name="DB"/>
+            </Server>
+            <Server Name="D8-SF-01" IP="192.168.0.2" Domain="MRDAILY8" Note="">
+              <Type Name="NTP"/>
+              <Type Name="MGMT"/>
+              <Type Name="DB"/>
+            </Server>
+            <Server Name="D8-CF-01" IP="192.168.0.3" Domain="MRDAILY8" Note="">
+              <Type Name="NTP"/>
+              <Type Name="MGMT"/>
+              <Type Name="DB"/>
+            </Server>
+        </Folder>
+        <Folder Name="Daily9" >
+            <Server Name="D9-MGMT-01" IP="192.168.1.1" Domain="MRDAILY9" Note="">
+              <Type Name="NTP"/>
+              <Type Name="MGMT"/>
+              <Type Name="DB"/>
+            </Server>            
+            <Server Name="D9-SF-01" IP="192.168.1.2" Domain="MRDAILY9" Note="">
+              <Type Name="NTP"/>
+              <Type Name="MGMT"/>
+              <Type Name="DB"/>
+            </Server>            
+            <Server Name="D9-CF-01" IP="192.168.1.3" Domain="MRDAILY9" Note=""/>
+        </Folder>
+        <Server Name="IPTV-DC-01" IP="192.168.1.0" Domain="IPTV" Note=""/>
+        <Server Name="IPTV-DC-02" IP="192.168.1.7" Domain="iptv" Note="">
+          <Type Name="DC"/>
+       </Server>
+  </Folder>
+  <Folder Name="VOD" >
+        <Folder Name="DVOD8" >
+            <Server Name="DVOD8-MGMT-01" IP="192.168.2.1" Domain="VODDEV" Note="">
+              <Type Name="NTP"/>
+              <Type Name="MGMT"/>
+              <Type Name="DB"/>
+            </Server>
+            <Server Name="DVOD8-IMP-01" IP="192.168.2.2" Domain="VODDEV" Note="">
+              <Type Name="NTP"/>
+              <Type Name="MGMT"/>
+              <Type Name="DB"/>
+            </Server>            
+            <Server Name="DVOD8-MGMT-02" IP="192.168.2.3" Domain="VODDEV" Note="">
+              <Type Name="NTP"/>
+              <Type Name="MGMT"/>
+              <Type Name="DB"/>
+            </Server>            
+        </Folder>  
+  </Folder>
+
+
+</Folder>
+
+</SRCServerList>

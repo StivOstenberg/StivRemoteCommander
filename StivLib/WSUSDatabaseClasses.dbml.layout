@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="WSUSDatabaseClasses">
+  <DataContextMoniker Name="/WSUSDatabaseClassesDataContext" />
+  <nestedChildShapes>
+    <classShape Id="cac56236-4663-40b9-86b8-413f96ea6d68" absoluteBounds="0.5, 1.5, 2, 3.5016097005208326">
+      <DataClassMoniker Name="/WSUSDatabaseClassesDataContext/tbComputerTarget" />
+      <nestedChildShapes>
+        <elementListCompartment Id="61a2ca3a-a849-4461-813b-3a39eb4b37cc" absoluteBounds="0.51500000000000012, 1.96, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="27479ee6-183c-469e-82ab-8f8dd23ff700" absoluteBounds="3.875, 2, 2, 5.8092268880208326">
+      <DataClassMoniker Name="/WSUSDatabaseClassesDataContext/tbComputerTargetDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c45a31b6-91f3-4d48-a41c-ebf53563ce4e" absoluteBounds="3.8899999999999997, 2.46, 1.9700000000000002, 5.249226888020833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="24af7dd2-5bdc-47c1-a877-29a9c8fc9c3a" absoluteBounds="6.25, 3.25, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/WSUSDatabaseClassesDataContext/tbComputerSummaryForMicrosoftUpdate" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9db182d9-d118-45cd-b772-e14b19254b6a" absoluteBounds="6.265, 3.71, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.5 : 1.71875); (7.25 : 1.71875); (7.25 : 3.25)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WSUSDatabaseClassesDataContext/tbComputerTarget/tbComputerTarget_tbComputerSummaryForMicrosoftUpdate" />
+      <nodes>
+        <classShapeMoniker Id="cac56236-4663-40b9-86b8-413f96ea6d68" />
+        <classShapeMoniker Id="24af7dd2-5bdc-47c1-a877-29a9c8fc9c3a" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

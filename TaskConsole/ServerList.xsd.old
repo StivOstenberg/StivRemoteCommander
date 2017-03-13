@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="SRCServerList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Folder" minOccurs="0" maxOccurs="15">
+          <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="15">
+              <xs:element name="Folder" type="afolder" minOccurs="0" maxOccurs="15"></xs:element>
+              <xs:element name="Server" minOccurs="0" type="aserver" maxOccurs="unbounded">
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="Name" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Server" minOccurs="0" type="aserver" maxOccurs="unbounded"  />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+
+  <xs:complexType name="afolder">
+    <xs:sequence minOccurs="0" maxOccurs="15">
+      <xs:element name="Folder" type="afolder" minOccurs="0" maxOccurs="15"></xs:element>
+      <xs:element name="Server" minOccurs="0" type="aserver" maxOccurs="unbounded">
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="Name" type="xs:string" use="required" />
+  </xs:complexType>
+  
+  <xs:complexType  name="aserver">
+        <xs:sequence minOccurs="0">
+                <xs:element maxOccurs="unbounded" name="Type">
+          <xs:complexType>
+            <xs:attribute name="Name" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>        
+      </xs:sequence>      
+      <xs:attribute name="Name" type="xs:string" use="required" />
+      <xs:attribute name="IP" type="xs:string" use="required" />
+      <xs:attribute name="Domain" type="xs:string" use="required" />
+      <xs:attribute name="Note" type="xs:string" use="required" />
+    </xs:complexType>
+
+
+
+</xs:schema>

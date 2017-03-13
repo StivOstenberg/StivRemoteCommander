@@ -1,0 +1,10 @@
+﻿<Window x:Name="ShowDetailsWindow" x:Class="StivTaskConsole.ShowDetails"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Details View" Height="387" Width="681">
+    <Grid>
+        <Button x:Name="ExitButton" Content="Exit" Margin="0,0,10,10" HorizontalAlignment="Right" Width="38" Height="20" VerticalAlignment="Bottom" Click="ExitButton_Click"/>
+        <DataGrid x:Name="DetailsGrid" Margin="10,10,10,44" CanUserResizeRows="False" VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="False"/>
+
+    </Grid>
+</Window>

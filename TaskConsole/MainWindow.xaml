@@ -1,0 +1,134 @@
+﻿<Window x:Name="TesterMainWindow" x:Class="StivTaskConsole.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Stiv Remote Command Tool" Height="820" MinHeight="820" Width="1371" MinWidth="1467" ShowInTaskbar="True" IsHitTestVisible="True" Closed="TesterMainWindow_Closed" Icon="newconsole.ico">
+    <Grid Margin="0,0,-31,-21" MinWidth="1467" MinHeight="800">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1093*"/>
+            <ColumnDefinition Width="392*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.Background>
+            <ImageBrush/>
+        </Grid.Background>
+        <TextBox x:Name="UserTextBox" Height="23" Margin="8,53,0,0" TextWrapping="Wrap" Text="stivo" VerticalAlignment="Top" HorizontalAlignment="Left" Width="74" KeyDown="User_PassTextBox_KeyDown" LostFocus="UserTextBox_LostFocus" MouseLeave="UserTextBox_MouseLeave" />
+        <Label x:Name="Usernamelabel" Content="UserName" HorizontalAlignment="Left" Margin="8,27,0,0" VerticalAlignment="Top" Height="26" Width="65"/>
+        <PasswordBox x:Name="PasswordTextBox" HorizontalAlignment="Left" Height="23" Margin="124,53,0,0"  VerticalAlignment="Top" Width="120" PasswordChar="*" KeyDown="User_PassTextBox_KeyDown" MouseLeave="PasswordTextBox_MouseLeave" LostKeyboardFocus="PasswordTextBox_LostKeyboardFocus" LostFocus="PasswordTextBox_LostFocus"/>
+        <Label x:Name="PasswerdLabel" Content="Password" HorizontalAlignment="Left" Margin="115,27,0,0" VerticalAlignment="Top" SnapsToDevicePixels="True" RenderTransformOrigin="-1.417,0.577" Height="26" Width="60"/>
+        <Menu x:Name="Menu" Height="27" VerticalAlignment="Top" Grid.ColumnSpan="2">
+            <MenuItem x:Name="FileMenuItem" Header="File" Height="27" Width="34">
+                <MenuItem x:Name="LoadGroupFile" Header="Load Servers from Single File" Height="20" Width="300" Click="LoadSingleGroupFile_Click"/>
+                <MenuItem x:Name="CreateGroupFile" Header="Load Servers from Dir" Height="20" Width="300" Click="CreateGroupFile_Click"/>
+                <MenuItem x:Name="LoadCredentialFile" Header="Load Credential File" Height="20" Width="300"/>
+                <MenuItem x:Name="LoadServicesFile" Header="Load Services File" Height="20" Width="300"/>
+                <MenuItem x:Name="LoadDiskSpaceFile" Header="Load Disk File" Height="20" Width="300"/>
+                <MenuItem x:Name="ExitMenuItem" Header="Exit" Height="20" Width="300"  Click="ExitMenuItem_Click"/>
+            </MenuItem>
+            <!-- The section below will be replaced and rebuilt when groupfile is loaded.-->
+            <MenuItem x:Name="Chooser" Header="Chooser" Height="27" Width="60"  >
+                <MenuItem x:Name="Load_Server_Chooser" Header="Load Server Chooser" Height="20" Width="300" Click="OpenServerPickerButtonClick" />
+                <MenuItem x:Name="Load_TestServers" Header="Load Test Servers" Height="20" Width="300" Click="LoadServersItem_Click" />
+            </MenuItem>
+            <!-- Under the terms of the License, the below 3 lines may not be deleted or modified-->
+            <MenuItem x:Name="AboutMenuItem" Header="About" Height="27" Width="112">
+                <MenuItem x:Name="CreditsItem" Header="Credits" Height="20" Width="300" Click="CreditsItem_Click"/>
+                <MenuItem x:Name="DonateItem" Header="Donate with PayPal" Height="20" Width="300" Click="DonateWithPayPal_Click"/>
+            </MenuItem>
+        </Menu>
+
+
+        <DataGrid x:Name="DasGrid" ItemsSource="{Binding}" AutoGenerateColumns="False" Margin="10,116,42,28" VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="False"         
+                 VirtualizingStackPanel.IsVirtualizing="True" VirtualizingStackPanel.VirtualizationMode="Recycling" >
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ServerGuid" Binding="{Binding ServerGuid, Mode=OneWay}" Visibility="Hidden" />
+                <!--DataGridCheckBoxColumn Header="X" Binding="{Binding IsEnabled, Mode=TwoWay}" /-->
+                <DataGridTemplateColumn Header="*" MaxWidth="30" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content=""  Height="20" Width="20" Click="LEDButton_Click"  Background="{Binding LED}" CommandParameter="{Binding}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Header="servername" Binding="{Binding servername}"  Width="150"/>
+                <DataGridTextColumn Header="lastconnected" Binding="{Binding lastconnected, Mode=OneWay}" Width="90"/>
+                <DataGridTextColumn Header="domain" Binding="{Binding domain, Mode=OneWay}" Width="95"/>
+                <!-- The job history is available in the Datarow,  but is not shown-->
+                <DataGridTextColumn Header="LastTask" Binding="{Binding LastTask, Mode=OneWay}" Width="100" />
+                <DataGridTextColumn Header="LastStatus" Binding="{Binding LastStatus, Mode=OneWay}" Width="100" />
+                <DataGridTextColumn Header="LastSummary" Binding="{Binding LastSummary, Mode=OneWay}" Width="250"/>
+                <DataGridTemplateColumn Header="Details" MaxWidth="45" Width="40" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content=""  Height="20" Width="20" Click="Details_Click"  Background="{Binding LastTaskColor, Mode=OneWay}" CommandParameter="{Binding}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+
+
+        <Label x:Name="NumberofTargetsLabel" Content="Number of selected targets: XX" Margin="0,85,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.804,0.531" HorizontalAlignment="Left" Width="198" Height="26"/>
+        <GroupBox x:Name="SystemGroupbox" Header="System Commands" Margin="0,32,10,0" HorizontalAlignment="Right" Width="326" Height="192" VerticalAlignment="Top" Grid.Column="1">
+            <Grid HorizontalAlignment="Left" Margin="2,10,-2,0" Width="314" RenderTransformOrigin="1.986,-1.09" Height="154" VerticalAlignment="Top">
+                <Button x:Name="IISStopButton" Content="IIS Stop" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.004,-1.96" Click="IISStopButton_Click" Background="Lime"/>
+                <Button x:Name="IISResetButton" Content="IIS Reset" HorizontalAlignment="Left" Margin="103,10,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.076,-0.732" Click="IISResetButton_Click" Background="Lime"/>
+                <Button x:Name="IISStartButton" Content="IIS Start" HorizontalAlignment="Left" Margin="197,10,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.103,-0.954" Click="IISStartButton_Click" Background="Lime"/>
+                <Button x:Name="RebootButton" Content="Reboot" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.058,-1.272" Margin="10,35,0,0" Click="RebootButton_Click" Background="Lime"/>
+                <Button x:Name="WSUS_Update" Content="WSUS Checkin" HorizontalAlignment="Left" Margin="23,85,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.105,-15.001" Click="WSUS_Update_Click" Background="Lime"/>
+                <Button x:Name="CheckUpdatesButton" Content="Check Updates" HorizontalAlignment="Left" Margin="112,86,0,0" VerticalAlignment="Top" Width="90" Click="CheckUpdatesButton_Click" Background="Lime" AllowDrop="True"/>
+                <Button x:Name="InstallUpdatesButton" Content="Install Updates" HorizontalAlignment="Left" Margin="211,87,0,0" VerticalAlignment="Top" Width="90"/>
+                <Button x:Name="ParseEventsButton" Content="Parse Events" HorizontalAlignment="Left" Margin="23,124,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.105,-15.001" Background="Lime" Click="ParseEventsButton_Click"/>
+                <Button x:Name="LastDumpButton" Content="LastDump" HorizontalAlignment="Left" Margin="157,127,0,0" VerticalAlignment="Top" Width="75" Background="#FF4DF50E" ToolTip="Time on the last memory dump file." Click="LastDumpButton_Click"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="DomainGroupbox" Header="Domain Functions" Margin="0,242,22,0" VerticalAlignment="Top" Height="173" HorizontalAlignment="Right" Width="287" Grid.Column="1">
+            <Grid HorizontalAlignment="Left" Height="172" VerticalAlignment="Top" Width="271" Margin="0,-9,0,-12">
+                <TextBox x:Name="DomainUsernameTextBox" HorizontalAlignment="Left" Height="23" Margin="56,10,0,0" TextWrapping="Wrap" Text="stivo" VerticalAlignment="Top" Width="120"/>
+                <Button x:Name="CreateUserButton" Content="Create User" HorizontalAlignment="Left" Margin="101,117,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.997,-8.119" ToolTip="Create or demote to standard user"/>
+                <Button x:Name="DisableUserButton" Content="DisableUser" HorizontalAlignment="Left" Margin="10,142,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.065,-1.101" ToolTip="Disable User Account"/>
+                <Button x:Name="EnableUserButton" Content="Enable User" HorizontalAlignment="Left" Margin="101,142,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.065,-1.101" ToolTip="Enable User Account"/>
+                <Button x:Name="AdminButton" Content="CreateAdmin" HorizontalAlignment="Left" Margin="10,117,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.023,0.09" ToolTip="Create or Promote Admin User"/>
+                <Label x:Name="UserLabel" Content="User:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.667,0.385"/>
+                <PasswordBox x:Name="DomainPassword" HorizontalAlignment="Left" Margin="56,43,0,0" VerticalAlignment="Top" Height="21" Width="120" RenderTransformOrigin="0.631,1.816"/>
+                <Button x:Name="CheckUserButton" Content="CheckUser" HorizontalAlignment="Left" Margin="10,92,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.562,-0.919" Click="CheckUserButton_Click"/>
+                <Button x:Name="Change" Content="ChangePass" HorizontalAlignment="Left" Margin="100,90,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.342,0.454"/>
+                <Label x:Name="DpassLabel" Content="Pass:" Margin="11,39,224,0" VerticalAlignment="Top" RenderTransformOrigin="-0.668,-3.612"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="MediaroomGroupbox" Header="Mediaroom" Margin="0,485,10,0" VerticalAlignment="Top" Height="186" HorizontalAlignment="Right" Width="361" Grid.Column="1">
+            <Grid HorizontalAlignment="Left" Height="164" VerticalAlignment="Top" Width="349">
+                <Button x:Name="ServiceStopButton" Content="Stop" HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top" Width="39" RenderTransformOrigin="1.828,0.193" Click="ServiceStopButton_Click" Background="Lime"/>
+                <Button x:Name="ServiceRestartButton" Content="Restart" HorizontalAlignment="Left" Margin="67,134,0,0" VerticalAlignment="Top" Width="57" RenderTransformOrigin="1.828,0.193" Click="ServiceRestartButton_Click" Background="Lime"/>
+                <Button x:Name="ServiceStartButton" Content="Start" Margin="139,134,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.828,0.193" Click="ServiceStartButton_Click" Background="Lime" HorizontalAlignment="Left" Width="47"/>
+                <CheckBox x:Name="AllServersCheckbox" Content="-allservers" HorizontalAlignment="Left" Margin="239,136,0,0" VerticalAlignment="Top" IsEnabled="False"/>
+                <Label Content="AdminService" HorizontalAlignment="Left" Margin="126,99,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.514,-0.637"/>
+                <Button x:Name="CertChainButton" Content="CertChains" HorizontalAlignment="Left" Margin="238,10,0,0" VerticalAlignment="Top" Width="75" Click="CertChainButton_Click"/>
+                <Button x:Name="FindPrivateButton" Content="FindPrivate" HorizontalAlignment="Left" Margin="239,51,0,0" VerticalAlignment="Top" Width="75" Click="FindPrivateButton_Click" Background="Lime"/>
+            </Grid>
+        </GroupBox>
+        <CheckBox x:Name="VerboseLoggingCheckbox" Content="Verbose Logging" HorizontalAlignment="Left" Margin="313,38,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.282,-0.8" Checked="VerboseLoggingCheckbox_Checked" Height="15" Width="110"/>
+        <TextBox x:Name="EndpointBox" HorizontalAlignment="Left" Height="23" Margin="250,85,0,0" TextWrapping="Wrap" Text="Arguments: " VerticalAlignment="Top" Width="173" />
+        <Label x:Name="UpdateTimeLabel" Content="Time:" Margin="0,748,171,0" RenderTransformOrigin="0.605,0.185" VerticalAlignment="Top" HorizontalAlignment="Right" Width="187" Grid.Column="1" Height="26"/>
+        <Border BorderBrush="Black" BorderThickness="1" Height="55" Margin="0,704,44,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="47" Grid.Column="1">
+            <Image x:Name="MyImageBox" Height="27" Margin="9,14,11,0" VerticalAlignment="Top"/>
+        </Border>
+        <ComboBox x:Name="ColorDropbox" Margin="0,764,44,0" VerticalAlignment="Top" SelectionChanged="ColorDropbox_SelectionChanged" RenderTransformOrigin="0.35,7.727" HorizontalAlignment="Right" Width="120" Grid.Column="1" Height="22">
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                    <GradientStop Color="#FF60F01D" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+        </ComboBox>
+        <Button x:Name="KillAgents" Content="Kill Agents" Margin="0,676,283,0" Click="KillAgents_Click" Height="20" VerticalAlignment="Top" RenderTransformOrigin="0.547,-0.6" HorizontalAlignment="Right" Width="75" Grid.Column="1"/>
+        <Button x:Name="ShowConnectedButton" Content="Show All Connected" HorizontalAlignment="Left" Margin="885,38,0,0" VerticalAlignment="Top" Width="153" Click="ShowConnectedButton_Click" Height="20"/>
+        <Button x:Name="SendAgentButton" Content="SendAgent" HorizontalAlignment="Left" Margin="584,56,0,0" VerticalAlignment="Top" Width="88" RenderTransformOrigin="-0.431,2.655" Click="SendAgentButton_Click" Height="20"/>
+        <Button x:Name="Test_ServerPickerButton" Content="Change Serverlist" Grid.Column="1" HorizontalAlignment="Right" Margin="0,723,246,0" Width="112" Background="Lime" AllowDrop="True" Click="OpenServerPickerButtonClick" RenderTransformOrigin="0.509,-1.1" Height="20" VerticalAlignment="Top"/>
+        <Button x:Name="UpdateStatusButton" Content="Update Status" Margin="0,681,159,0" Click="UpdateStatusButton_Click" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Width="97" Grid.Column="1"/>
+
+    </Grid>
+
+</Window>

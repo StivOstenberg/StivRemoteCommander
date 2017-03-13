@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SUSDB" Class="WSUSDatabaseClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=msvmr-wsus-01;Initial Catalog=SUSDB;Persist Security Info=True;User ID=WSUSReadOnly" SettingsObjectName="PatchNightTool.Properties.Settings" SettingsPropertyName="SUSDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tbComputerTarget" Member="tbComputerTargets">
+    <Type Name="tbComputerTarget">
+      <Column Name="TargetID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ComputerID" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="SID" Type="System.Data.Linq.Binary" DbType="VarBinary(85)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="LastSyncTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastReportedStatusTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastReportedRebootTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IPAddress" Type="System.String" DbType="NVarChar(56)" CanBeNull="true" />
+      <Column Name="FullDomainName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="IsRegistered" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LastInventoryTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastNameChangeTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EffectiveLastDetectionTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ParentServerTargetID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LastSyncResult" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tbComputerTarget_tbComputerSummaryForMicrosoftUpdate" Member="tbComputerSummaryForMicrosoftUpdate" ThisKey="TargetID" OtherKey="TargetID" Type="tbComputerSummaryForMicrosoftUpdate" Cardinality="One" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbComputerTargetDetail" Member="tbComputerTargetDetails">
+    <Type Name="tbComputerTargetDetail">
+      <Column Name="TargetID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OSMajorVersion" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OSMinorVersion" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OSBuildNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OSServicePackMajorNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OSServicePackMinorNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OSLocale" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="ComputerMake" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
+      <Column Name="ComputerModel" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
+      <Column Name="BiosVersion" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
+      <Column Name="BiosName" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
+      <Column Name="BiosReleaseDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProcessorArchitecture" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LastStatusRollupTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastReceivedStatusRollupNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastSentStatusRollupNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SamplingValue" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="SuiteMask" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="OldProductType" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="NewProductType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SystemMetrics" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientVersion" Type="System.String" DbType="NVarChar(23)" CanBeNull="true" />
+      <Column Name="TargetGroupMembershipChanged" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="OSFamily" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="OSDescription" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbComputerSummaryForMicrosoftUpdates" Member="tbComputerSummaryForMicrosoftUpdates">
+    <Type Name="tbComputerSummaryForMicrosoftUpdate">
+      <Column Name="TargetID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Unknown" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NotInstalled" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Downloaded" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Installed" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Failed" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InstalledPendingReboot" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastChangeTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="tbComputerTarget_tbComputerSummaryForMicrosoftUpdate" Member="tbComputerTarget" ThisKey="TargetID" OtherKey="TargetID" Type="tbComputerTarget" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

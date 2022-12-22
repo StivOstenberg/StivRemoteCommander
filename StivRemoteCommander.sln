@@ -1,9 +1,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StivLib", "StivLib\StivLib.csproj", "{3C50DC99-BA2F-477B-99F4-97FFCC8697F8}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{013BEC68-EE52-439E-B287-6E5BF46004CB}"
 	ProjectSection(SolutionItems) = preProject
 		License.txt = License.txt
@@ -13,54 +11,44 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		StivLib\WSUSDatabaseClasses.designer.cs = StivLib\WSUSDatabaseClasses.designer.cs
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemAgent", "SystemAgent\SystemAgent.csproj", "{FDD440FA-941C-4E43-BA61-E6248831A5B3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskConsoleServiceContract", "TaskConsoleWCFService\TaskConsoleServiceContract.csproj", "{66C2C6C0-077B-48D9-B02B-24FE1D7344C1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskConsole", "TaskConsole\TaskConsole.csproj", "{88576D93-1A11-483B-976E-18C1A472F897}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskConsoleServiceContract", "TaskConsoleWCFService\TaskConsoleServiceContract.csproj", "{66C2C6C0-077B-48D9-B02B-24FE1D7344C1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemAgent", "SystemAgent\SystemAgent.csproj", "{FDD440FA-941C-4E43-BA61-E6248831A5B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StivLib", "StivLib\StivLib.csproj", "{3C50DC99-BA2F-477B-99F4-97FFCC8697F8}"
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 5
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs12
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = StivLib\\StivLib.csproj
-		SccProjectName1 = StivLib
-		SccLocalPath1 = StivLib
-		SccProjectUniqueName2 = TaskConsole\\TaskConsole.csproj
-		SccProjectName2 = TaskConsole
-		SccLocalPath2 = TaskConsole
-		SccProjectUniqueName3 = SystemAgent\\SystemAgent.csproj
-		SccProjectName3 = SystemAgent
-		SccLocalPath3 = SystemAgent
-		SccProjectUniqueName4 = TaskConsoleWCFService\\TaskConsoleServiceContract.csproj
-		SccProjectName4 = TaskConsoleWCFService
-		SccLocalPath4 = TaskConsoleWCFService
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3C50DC99-BA2F-477B-99F4-97FFCC8697F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3C50DC99-BA2F-477B-99F4-97FFCC8697F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3C50DC99-BA2F-477B-99F4-97FFCC8697F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3C50DC99-BA2F-477B-99F4-97FFCC8697F8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FDD440FA-941C-4E43-BA61-E6248831A5B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FDD440FA-941C-4E43-BA61-E6248831A5B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FDD440FA-941C-4E43-BA61-E6248831A5B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FDD440FA-941C-4E43-BA61-E6248831A5B3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{88576D93-1A11-483B-976E-18C1A472F897}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{88576D93-1A11-483B-976E-18C1A472F897}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{88576D93-1A11-483B-976E-18C1A472F897}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{88576D93-1A11-483B-976E-18C1A472F897}.Release|Any CPU.Build.0 = Release|Any CPU
 		{66C2C6C0-077B-48D9-B02B-24FE1D7344C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{66C2C6C0-077B-48D9-B02B-24FE1D7344C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66C2C6C0-077B-48D9-B02B-24FE1D7344C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66C2C6C0-077B-48D9-B02B-24FE1D7344C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88576D93-1A11-483B-976E-18C1A472F897}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88576D93-1A11-483B-976E-18C1A472F897}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88576D93-1A11-483B-976E-18C1A472F897}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88576D93-1A11-483B-976E-18C1A472F897}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDD440FA-941C-4E43-BA61-E6248831A5B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDD440FA-941C-4E43-BA61-E6248831A5B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDD440FA-941C-4E43-BA61-E6248831A5B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDD440FA-941C-4E43-BA61-E6248831A5B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C50DC99-BA2F-477B-99F4-97FFCC8697F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C50DC99-BA2F-477B-99F4-97FFCC8697F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C50DC99-BA2F-477B-99F4-97FFCC8697F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C50DC99-BA2F-477B-99F4-97FFCC8697F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FDD440FA-941C-4E43-BA61-E6248831A5B3} = {013BEC68-EE52-439E-B287-6E5BF46004CB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1780502E-60DA-40FF-961F-E835AF75DC2A}
 	EndGlobalSection
 EndGlobal

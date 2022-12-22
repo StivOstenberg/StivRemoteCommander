@@ -1,4 +1,5 @@
-﻿using StivLibrary;
+﻿
+using StivLibrary;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -26,20 +27,20 @@ namespace TaskConsoleWCFService
         /// <summary>
         /// String = GUID, which is also contained in the Jobber but provides unique reference for lookups.
         /// </summary>
-        static Dictionary<string, Jobber> _Joblist = new Dictionary<string, Jobber>();
+        static readonly Dictionary<string, Jobber> _Joblist = new Dictionary<string, Jobber>();
 
         /// <summary>
         /// String is the machinename,  Datetime is the last time it connected.
         /// </summary>
-        static Dictionary<string, DateTime> _ConnectedClients = new Dictionary<string, DateTime>();
+        static readonly Dictionary<string, DateTime> _ConnectedClients = new Dictionary<string, DateTime>();
 
 
         static string MyPort = "";
 
-        static Dictionary<string, JobStatusRow> _DatagridSource = new Dictionary<string, JobStatusRow>();
+        static readonly Dictionary<string, JobStatusRow> _DatagridSource = new Dictionary<string, JobStatusRow>();
 
         private static Dictionary<string, DoCred> _Credlist = new Dictionary<string, DoCred>();
-        static Dictionary<string, string> _ServersInScope = new Dictionary<string, string>();
+        static readonly Dictionary<string, string> _ServersInScope = new Dictionary<string, string>();
 
         private static readonly ReaderWriterLockSlim ConnectedClientLock = new ReaderWriterLockSlim();
         private static readonly ReaderWriterLockSlim JobListLock = new ReaderWriterLockSlim();
@@ -68,7 +69,7 @@ namespace TaskConsoleWCFService
             var localconnected = _ConnectedClients; // This is a list of Agents that are connected to the service
             ConnectedClientLock.ExitReadLock();
 
-            Dictionary<string, string> LSI = new Dictionary<string, string>();
+            Dictionary<string, string> LSI;
             try
             {
                 ServersInScopeLock.TryEnterReadLock(3000);
@@ -220,12 +221,14 @@ namespace TaskConsoleWCFService
             }
             catch (Exception ex)// Emergency lock clearing?
             {
-                string temp = ex.ToString();
-                temp = "";
+
+
                 if (ConnectedClientLock.IsReadLockHeld) ConnectedClientLock.ExitReadLock();
                 if (ConnectedClientLock.IsWriteLockHeld) ConnectedClientLock.ExitWriteLock();
-                Dictionary<string, DateTime> FailureReturn = new Dictionary<string, DateTime>();
-                FailureReturn.Add("", DateTime.Now);
+                Dictionary<string, DateTime> FailureReturn = new Dictionary<string, DateTime>
+                {
+                    { "", DateTime.Now }
+                };
                 return FailureReturn;
             }
 
@@ -249,7 +252,7 @@ namespace TaskConsoleWCFService
 
 
             string clientnameaslower = clientname.ToLower();
-            string shortname = "";
+            string shortname ;
             string[] whackity;
             char[] delimiter1 = new char[] { '.' };   // <-- String Split on .
 
@@ -590,14 +593,16 @@ namespace TaskConsoleWCFService
                     {
                         DatagridLock.TryEnterWriteLock(3000);
 
-                        JobStatusRow newrow = new JobStatusRow();
-                        newrow.ServerGuid = new System.Guid().ToString();
-                        newrow.IsEnabled = true;
-                        newrow.servername = hostname;
-                        newrow.domain = KVP.Value;
-                        newrow.AgentStatus = "Not sent";
-                        newrow.lastconnected = "Never";
-                        newrow.ServerJoblist = new List<Jobber>();
+                        JobStatusRow newrow = new JobStatusRow
+                        {
+                            ServerGuid = new System.Guid().ToString(),
+                            IsEnabled = true,
+                            servername = hostname,
+                            domain = KVP.Value,
+                            AgentStatus = "Not sent",
+                            lastconnected = "Never",
+                            ServerJoblist = new List<Jobber>()
+                        };
                         _DatagridSource.Add(hostname, newrow);
                         DatagridLock.ExitWriteLock();
                     }
@@ -642,20 +647,22 @@ namespace TaskConsoleWCFService
             {
                 foreach (string aserver in SIScope.Keys)
                 {
-                    ThreadInfo ti = new ThreadInfo();
-                    ti.server = aserver;//
-                    ti.domain = SIScope[aserver];
-                    ti.CLArgs = GetArgsToPass();
-
-                    if (_Credlist.Keys.Contains(ti.domain))//Get the username and password for specific domain,  otherwise use the default.
+                    ThreadInfo ti = new ThreadInfo
                     {
-                        ti.password = _Credlist[ti.domain].password;
-                        ti.user = _Credlist[ti.domain].user;
+                        Server = aserver,//
+                        Domain = SIScope[aserver],
+                        CLArgs = GetArgsToPass()
+                    };
+
+                    if (_Credlist.Keys.Contains(ti.Domain))//Get the username and password for specific domain,  otherwise use the default.
+                    {
+                        ti.Password = _Credlist[ti.Domain].password;
+                        ti.User = _Credlist[ti.Domain].user;
                     }
                     else
                     {
-                        ti.password = _Credlist["default"].password;
-                        ti.user = _Credlist["default"].user;
+                        ti.Password = _Credlist["default"].password;
+                        ti.User = _Credlist["default"].user;
                     }
                     //this thread will call Rexec.  Need to look at using Threadpool to do this...
 
@@ -673,10 +680,10 @@ namespace TaskConsoleWCFService
         }
         class ThreadInfo
         {
-            public string server { get; set; }
-            public string user { get; set; }
-            public string domain { get; set; }
-            public string password { get; set; }
+            public string Server { get; set; }
+            public string User { get; set; }
+            public string Domain { get; set; }
+            public string Password { get; set; }
             public string CLArgs { get; set; }
         }
 
@@ -687,7 +694,7 @@ namespace TaskConsoleWCFService
 
 
             ThreadInfo ti = Args as ThreadInfo;
-            SendAgent(ti.server, ti.user, ti.domain, ti.password, ti.CLArgs);
+            SendAgent(ti.Server, ti.User, ti.Domain, ti.Password, ti.CLArgs);
 
         }
 

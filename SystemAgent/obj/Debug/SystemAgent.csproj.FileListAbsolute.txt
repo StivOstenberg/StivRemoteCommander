@@ -1,0 +1,11 @@
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\SystemAgent\obj\Debug\SystemAgent.csproj.AssemblyReference.cache
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\SystemAgent\obj\Debug\SystemAgent.csproj.SuggestedBindingRedirects.cache
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\SystemAgent\obj\Debug\Interop.WUApiLib.dll
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\SystemAgent\obj\Debug\SystemAgent.csproj.ResolveComReference.cache
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\SystemAgent\obj\Debug\SystemAgent.csproj.CoreCompileInputs.cache
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\TaskConsole\bin\Debug\StivSystemAgent.exe.config
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\TaskConsole\bin\Debug\StivSystemAgent.exe
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\TaskConsole\bin\Debug\StivSystemAgent.pdb
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\SystemAgent\obj\Debug\SystemAgent.csproj.CopyComplete
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\SystemAgent\obj\Debug\StivSystemAgent.exe
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\SystemAgent\obj\Debug\StivSystemAgent.pdb

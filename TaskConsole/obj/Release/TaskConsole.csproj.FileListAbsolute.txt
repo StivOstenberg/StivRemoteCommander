@@ -1,0 +1,12 @@
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\TaskConsole\obj\Release\TaskConsole.csproj.AssemblyReference.cache
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\TaskConsole\obj\Release\TaskConsole.csproj.SuggestedBindingRedirects.cache
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\TaskConsole\obj\Release\MainWindow.baml
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\TaskConsole\obj\Release\ShowDetails.baml
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\TaskConsole\obj\Release\MainWindow.g.cs
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\TaskConsole\obj\Release\ServerChooser.g.cs
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\TaskConsole\obj\Release\ShowDetails.g.cs
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\TaskConsole\obj\Release\App.g.cs
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\TaskConsole\obj\Release\StivTaskConsole_Content.g.cs
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\TaskConsole\obj\Release\GeneratedInternalTypeHelper.g.cs
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\TaskConsole\obj\Release\StivTaskConsole_MarkupCompile.cache
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\TaskConsole\obj\Release\StivTaskConsole_MarkupCompile.lref

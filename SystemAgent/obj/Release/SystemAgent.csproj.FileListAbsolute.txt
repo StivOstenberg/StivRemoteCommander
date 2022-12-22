@@ -1,0 +1,1 @@
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\SystemAgent\obj\Release\SystemAgent.csproj.AssemblyReference.cache

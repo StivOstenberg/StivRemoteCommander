@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <xs:element name="SRCServerList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Folder"/>
+      </xs:sequence>
+
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Folder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="15" ref="Folder"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="Server"/>
+      </xs:sequence>
+      <xs:attribute name="Name" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Server">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="Type"/>
+      </xs:sequence>
+      <xs:attribute name="Domain" use="required" type="xs:NCName"/>
+      <xs:attribute name="IP" use="required" type="xs:NMTOKEN"/>
+      <xs:attribute name="Name" use="required" type="xs:NCName"/>
+      <xs:attribute name="Note" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Type">
+    <xs:complexType>
+      <xs:attribute name="Name" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

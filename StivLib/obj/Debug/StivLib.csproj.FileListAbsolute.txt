@@ -1,0 +1,8 @@
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\TaskConsole\bin\Debug\StivLib.dll
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\TaskConsole\bin\Debug\StivLib.pdb
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\StivLib\obj\Debug\StivLib.csproj.AssemblyReference.cache
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\StivLib\obj\Debug\Interop.WUApiLib.dll
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\StivLib\obj\Debug\StivLib.csproj.ResolveComReference.cache
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\StivLib\obj\Debug\StivLib.csproj.CoreCompileInputs.cache
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\StivLib\obj\Debug\StivLib.dll
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\StivLib\obj\Debug\StivLib.pdb

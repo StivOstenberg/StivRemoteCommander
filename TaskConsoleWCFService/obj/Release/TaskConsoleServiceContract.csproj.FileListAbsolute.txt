@@ -1,0 +1,2 @@
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\TaskConsoleWCFService\obj\Release\TaskConsoleServiceContract.csproj.AssemblyReference.cache
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\TaskConsoleWCFService\obj\Release\TaskConsoleServiceContract.csproj.CoreCompileInputs.cache

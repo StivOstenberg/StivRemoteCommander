@@ -1,0 +1,8 @@
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\TaskConsoleWCFService\obj\Debug\TaskConsoleServiceContract.csproj.AssemblyReference.cache
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\TaskConsoleWCFService\obj\Debug\TaskConsoleServiceContract.csproj.CoreCompileInputs.cache
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\TaskConsole\bin\Debug\TaskConsoleWCFService.dll.config
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\TaskConsole\bin\Debug\TaskConsoleWCFService.dll
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\TaskConsole\bin\Debug\TaskConsoleWCFService.pdb
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\TaskConsoleWCFService\obj\Debug\TaskConsoleServiceContract.csproj.CopyComplete
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\TaskConsoleWCFService\obj\Debug\TaskConsoleWCFService.dll
+C:\Users\StivOstenberg\source\repos\StivRemoteCommander\TaskConsoleWCFService\obj\Debug\TaskConsoleWCFService.pdb
